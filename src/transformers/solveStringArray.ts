@@ -132,7 +132,7 @@ export const solveStringArray = {
 
       if (!isLikelyDecoder || !separator) return;
       const functionSource = generate(callee.node).code;
-      const regex = /(\-?\d+)\s*?,\s*?(\-?\d+)\)\s*?,\s*?(\-?\d+)\s*?,\s*?(\d+)/g;
+      const regex = /([-]?\d+)\s*?,\s*?([-]?\d+)\)\s*?,\s*?([-]?\d+)\s*?,\s*?(\d+)/g;
       const allMatches = [...functionSource.matchAll(regex)];
       
       const foundOps: any[] = [];

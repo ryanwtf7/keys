@@ -33,7 +33,7 @@ export const resolveMappings = {
                 const isWindowFunction = baseObj === 'window' || 
                   ['atob', 'btoa', 'parseInt', 'parseFloat', 'isNaN', 'isFinite'].includes(method);
                 let fullPath: string;
-                let actualBase = isWindowFunction ? 'window' : baseObj;
+                const actualBase = isWindowFunction ? 'window' : baseObj;
                 
                 if (isWindowFunction) {
                   fullPath = method;

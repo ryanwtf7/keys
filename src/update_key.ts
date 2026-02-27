@@ -123,7 +123,7 @@ EXTRACT THE KEY FROM THIS CODE:`;
           .join("\n")
           .replace("console.log", "return");
 
-        let finalKey = new Function(final_code)();
+        const finalKey = new Function(final_code)();
 
         console.log("\nLLM extracted key: ");
         console.log(finalKey + "\n");

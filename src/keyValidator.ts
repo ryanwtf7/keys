@@ -5,7 +5,7 @@ export interface KeyValidationResult {
   error?: string;
 }
 
-export function validateKey(key: string, expectedFormat?: string): KeyValidationResult {
+export function validateKey(key: string, _expectedFormat?: string): KeyValidationResult {
   if (!key || key.length === 0) {
     return { isValid: false, error: 'Empty key' };
   }
@@ -56,7 +56,7 @@ export function validateKey(key: string, expectedFormat?: string): KeyValidation
   };
 }
 
-export function extractKeyFromCode(code: string, endpoint: string): string | null {
+export function extractKeyFromCode(code: string, _endpoint: string): string | null {
   console.log('[PATTERN-EXTRACT] Attempting pattern-based extraction...');
 
   const atobPattern = /atob\s*\(\s*["']([A-Za-z0-9+/=]{30,})["']\s*\)/g;

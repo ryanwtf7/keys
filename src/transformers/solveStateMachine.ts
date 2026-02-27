@@ -117,7 +117,8 @@ export const solveStateMachine = {
         `  -> [PASS] Found potential SM pattern with state var '${stateVarName}'`
       );
 
-      let setterName: any, calculatorName: any, logicMap = new Map();
+      let setterName: any, calculatorName: any;
+      const logicMap = new Map();
 
       for (const prop of returnArg.get("properties")) {
         if (!prop.isObjectProperty()) continue;
