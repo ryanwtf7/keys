@@ -19,6 +19,8 @@ on:
 jobs:
   extract-keys:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allow the workflow to push commits
     
     steps:
       - name: 📥 Checkout code
