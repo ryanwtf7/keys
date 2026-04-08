@@ -74,6 +74,12 @@ jobs:
           else
             echo "❌ CloudVidz V3: Not found"
           fi
+          
+          if [ -f "rapidcloud_v2.txt" ]; then
+            echo "✅ RapidCloud V2: $(wc -c < rapidcloud_v2.txt) bytes"
+          else
+            echo "❌ RapidCloud V2: Not found"
+          fi
       
       - name: 📤 Upload extracted keys as artifacts
         uses: actions/upload-artifact@v4
@@ -85,6 +91,7 @@ jobs:
             megacloud_v3.txt
             cloudvidz_v2.txt
             cloudvidz_v3.txt
+            rapidcloud_v2.txt
           retention-days: 7
       
       - name: 🔄 Commit updated keys (if changed)
@@ -117,7 +124,7 @@ jobs:
           echo "| Endpoint | Status | Size |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|--------|------|" >> $GITHUB_STEP_SUMMARY
           
-          for file in megacloud_v2.txt megacloud_v3.txt cloudvidz_v2.txt cloudvidz_v3.txt; do
+          for file in megacloud_v2.txt megacloud_v3.txt cloudvidz_v2.txt cloudvidz_v3.txt rapidcloud_v2.txt; do
             endpoint=$(echo $file | sed 's/.txt//' | sed 's/_/ /g' | awk '{for(i=1;i<=NF;i++){ $i=toupper(substr($i,1,1)) substr($i,2) }}1')
             if [ -f "$file" ]; then
               size=$(wc -c < $file)

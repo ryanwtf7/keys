@@ -22,7 +22,14 @@ export const ENDPOINTS: RyanPapa[] = [
     category: 'obfuscated',
     description: 'MegaCloud V3 - base64 key'
   },
-  
+  // Rapid-Cloud
+  {
+    name: 'RapidCloud V2',
+    url: 'https://rapid-cloud.co/js/player/a/v2/pro/embed-1.min.js?v=',
+    outputFile: 'rapidcloud_v2.txt',
+    category: 'obfuscated',
+    description: 'RapidCloud V2 - hex key, similar structure to MegaCloud V2'
+  },
   // CloudVidz 
   {
     name: 'CloudVidz V2',

@@ -6,12 +6,14 @@ A TypeScript-based deobfuscator for extracting encryption keys from heavily obfu
 
 - **MegaCloud V2** - 64-char hex keys
 - **MegaCloud V3** - base64 keys 
+- **RapidCloud V2** - hex keys (similar structure to MegaCloud V2)
 - **CloudVidz V2** - 54-char hex keys (base64-encoded in source, decoded to hex)
 - **CloudVidz V3** - 56-char hex keys (base64-encoded in source, decoded to hex) 
 
 Each endpoint generates a separate output file:
 - `megacloud_v2.txt`
 - `megacloud_v3.txt`
+- `rapidcloud_v2.txt`
 - `cloudvidz_v2.txt`
 - `cloudvidz_v3.txt`
 
@@ -19,7 +21,7 @@ Each endpoint generates a separate output file:
 
 - **5-Pass Deobfuscation Pipeline**: Progressive transformation using custom Babel plugins
 - **AI-Powered Extraction**: Gemini 2.5 Flash for final code cleanup
-- **Multi-Endpoint Support**: Modular configuration system for easy expansion
+- **Multi-Endpoint Support**: Modular configuration system supporting 5 endpoints
 - **Robust Error Handling**: Timeouts, retries, and comprehensive logging
 - **Type-Safe**: Full TypeScript implementation
 

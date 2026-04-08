@@ -38,7 +38,7 @@ async function generateContent(prompt: string, apiKey: string): Promise<string |
   }
 }
 
-async function processSite(url: string, scriptFile: string, outputFile: string, apiKey: string): Promise<void> {
+async function processSite(url: string, scriptFile: string, outputFile: string, apiKey: string, endpointDescription?: string): Promise<void> {
   console.log(`Fetching script from ${url}...`);
 
   try {
@@ -75,6 +75,8 @@ async function processSite(url: string, scriptFile: string, outputFile: string, 
         if (match[0].match(xor_value_regex))
           xor_value = match[0].match(xor_value_regex)[0];
         
+        const endpointHint = endpointDescription ? `\nENDPOINT INFO: ${endpointDescription}` : '';
+
         let extra_message = `CRITICAL INSTRUCTIONS - Follow EXACTLY:
 
 1. Extract ONLY the code that generates the encryption key
@@ -84,7 +86,7 @@ async function processSite(url: string, scriptFile: string, outputFile: string, 
 5. Output ONLY executable JavaScript - NO markdown, NO explanations
 6. Last line MUST be: console.log(keyVariable)
 7. Do NOT generate complex algorithms (XOR, TEA, interleaving, etc.)
-
+${endpointHint}
 EXPECTED KEY FORMATS:
 - 64-char hex: lowercase a-f and digits 0-9 (e.g., 3709ad8892f413166b796a10c7fb86...)
 - 16-char hex: lowercase a-f and digits 0-9 (e.g., 60d0bbed38370355)
@@ -224,7 +226,8 @@ async function main() {
         buildEndpointUrl(endpoint),
         "input.txt",
         endpoint.outputFile,
-        apiKey
+        apiKey,
+        endpoint.description
       );
       results.push({ endpoint, success: true });
       console.log(`\n ${endpoint.name} - SUCCESS\n`);
